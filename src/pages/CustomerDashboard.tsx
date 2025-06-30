@@ -7,7 +7,7 @@ const CustomerDashboard = () => {
   const parcelId = "replace-with-latest-active-parcel-id"; // Logic will be dynamic
 
   return (
-    <div>
+    <div className="bg-teal-50">
       <div className="bg-white shadow-md sticky top-0">
         <CustomerNavbar />
       </div>

@@ -12,7 +12,7 @@ const AppRouter = () => {
   return (
     <>
       <Router>
-        <ToastContainer theme="colored" position="top-right" autoClose={3000} />
+        <ToastContainer theme="light" position="top-center" autoClose={3000} />
         <Routes>
           {/* Public */}
           <Route path="/" element={<Login />} />
