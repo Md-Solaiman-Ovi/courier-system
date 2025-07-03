@@ -23,6 +23,9 @@ importers:
       chart.js:
         specifier: ^4.5.0
         version: 4.5.0
+      courier-frontend:
+        specifier: 'link:'
+        version: 'link:'
       react:
         specifier: ^19.1.0
         version: 19.1.0

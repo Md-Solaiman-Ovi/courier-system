@@ -22,7 +22,7 @@ import axios from 'axios';
 import { store } from '../redux/store';
 
 const api = axios.create({
-  baseURL:  'http://localhost:8000/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'https://courier-system-backend-e4h95a4np-md-solaiman-ovis-projects.vercel.app/',
 });
 
 api.interceptors.request.use((config) => {
