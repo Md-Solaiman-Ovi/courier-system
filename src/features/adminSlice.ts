@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import api from '../../services/api';
+import api from '../services/api';
 
+  
 export const fetchAllParcels = createAsyncThunk('admin/fetchAllParcels', async () => {
   const res = await api.get('/parcel/all');
   return res.data;

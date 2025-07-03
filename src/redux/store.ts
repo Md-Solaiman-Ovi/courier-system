@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from '../features/auth/authSlice';
-import parcelReducer from "../features/parcels/parcelSlice"
-import adminReducer from "../features/admin/adminSlice"
-import agentReducer from "../features/agent/agentSlice"
+import authReducer from '../features/authSlice';
+import parcelReducer from "../features/parcelSlice"
+import adminReducer from "../features/adminSlice"
+import agentReducer from "../features/agentSlice"
 
 export const store = configureStore({
   reducer: {

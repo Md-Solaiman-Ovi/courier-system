@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaBell, FaEnvelope, FaUserCircle, FaBars } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../features/auth/authSlice";
+import { logout } from "../features/authSlice";
 
 interface NavbarProps {
   toggleSidebar: () => void;

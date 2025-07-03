@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import api from '../../services/api';
+import api from '../services/api';
 
 
 export interface Parcel {

@@ -123,7 +123,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { clearAuthState, loginUser } from "../features/auth/authSlice";
+import { clearAuthState, loginUser } from "../features/authSlice";
 import type { AppDispatch, RootState } from "../redux/store";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";

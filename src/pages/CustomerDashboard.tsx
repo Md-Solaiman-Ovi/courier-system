@@ -1,6 +1,6 @@
-import ParcelBookingForm from "../components/parcel/ParcelBookingForm";
-import BookingHistory from "../components/parcel/BookingHistory";
-import LiveTracking from "../components/parcel/LiveTracking";
+import ParcelBookingForm from "../components/ParcelBookingForm";
+import BookingHistory from "../components/BookingHistory";
+import LiveTracking from "../components/LiveTracking";
 import CustomerNavbar from "../components/CustomerNavbar";
 
 const CustomerDashboard = () => {

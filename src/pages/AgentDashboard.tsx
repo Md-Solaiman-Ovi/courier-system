@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAssignedParcels,
   updateParcelStatus,
-} from "../features/agent/agentSlice";
+} from "../features/agentSlice";
 import type { AppDispatch, RootState } from "../redux/store";
 import CustomerNavbar from "../components/CustomerNavbar";
 

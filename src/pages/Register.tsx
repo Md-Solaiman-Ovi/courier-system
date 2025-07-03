@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { toast } from "react-toastify";
-import { registerUser } from "../features/auth/authSlice";
+import { registerUser } from "../features/authSlice";
 import type { AppDispatch, RootState } from "../redux/store";
 
 const schema = yup.object().shape({
