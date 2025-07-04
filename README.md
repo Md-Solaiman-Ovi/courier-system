@@ -37,14 +37,11 @@ This is the **frontend application** for the Courier and Parcel Management Syste
 ## 🧑‍💻 Getting Started
 
 ### ⚙️ Install dependencies
-
-```bash
-pnpm install
-# or
-npm install
-
-
-
+    
+    ```bash
+    pnpm install
+    # or
+    npm install
 ## 🔐 Demo Credentials
 
 Use the following demo accounts to test the system based on user roles:
@@ -54,4 +51,5 @@ Use the following demo accounts to test the system based on user roles:
 | **Admin**    | `admin@gmail.com`     | `password`  |
 | **Agent**    | `agent@gmail.com`     | `agent123`  |
 | **Customer** | `customer@gmail.com`  | `customer123` |
+
 
