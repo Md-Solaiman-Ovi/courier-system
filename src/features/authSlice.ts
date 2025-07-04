@@ -51,7 +51,7 @@ export const loginUser = createAsyncThunk<
   { rejectValue: string }
 >('auth/loginUser', async (credentials, thunkAPI) => {
   try {
-    const response = await api.post('/auth/login', credentials);
+    const response = await api.post('/api/auth/login', credentials);
     return response.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response?.data?.message || 'Login failed');
@@ -65,7 +65,7 @@ export const registerUser = createAsyncThunk<
   { rejectValue: string }
 >('auth/registerUser', async (formData, thunkAPI) => {
   try {
-    const response = await api.post('/auth/register', formData);
+    const response = await api.post('/api/auth/register', formData);
     return response.data;
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response?.data?.message || 'Registration failed');

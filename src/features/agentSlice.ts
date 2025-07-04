@@ -92,7 +92,7 @@ export const fetchParcelsByAgent = createAsyncThunk(
   "agent/fetchParcelsByAgent",
   async (_, thunkAPI) => {
     try {
-      const res = await api.get("/agent/parcels");
+      const res = await api.get("/api/agent/parcels");
       return res.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.response?.data?.message || "Failed to fetch parcels");

@@ -21,26 +21,3 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
 };
 
 export default ProtectedRoute;
-
-// components/ProtectedRoute.tsx
-// import { Navigate, Outlet } from "react-router-dom";
-// import { useSelector } from "react-redux";
-// import type { RootState } from "../redux/store";
-
-// interface Props {
-//   allowedRoles: string[];
-// }
-
-// const ProtectedRoute = ({ allowedRoles }: Props) => {
-//   const { user } = useSelector((state: RootState) => state.auth);
-
-//   if (!user) return <Navigate to="/login" replace />;
-
-//   return allowedRoles.includes(user.role) ? (
-//     <Outlet />
-//   ) : (
-//     <Navigate to="/login" replace />
-//   );
-// };
-
-// export default ProtectedRoute;

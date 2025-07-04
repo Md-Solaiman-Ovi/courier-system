@@ -118,7 +118,7 @@ export const createParcel = createAsyncThunk<
 >('parcel/createParcel', async (data, thunkAPI) => {
   try {
     console.log("dispatch function", data)
-    const res = await api.post('/parcel', data);
+    const res = await api.post('/api/parcel', data);
     return res.data;
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || 'Booking failed');
@@ -130,7 +130,7 @@ export const getParcelsByUser = createAsyncThunk<Parcel[], void, { rejectValue: 
   'parcel/getParcelsByUser',
   async (_, thunkAPI) => {
     try {
-      const res = await api.get('/parcel/my-parcels');
+      const res = await api.get('/api/parcel/my-parcels');
       // console.log("my parcels: ", res)
       return res.data;
     } catch (err: any) {
@@ -146,7 +146,7 @@ export const getMyParcels = createAsyncThunk<
   { rejectValue: string }
 >('parcel/getMyParcels', async (_, thunkAPI) => {
   try {
-    const res = await api.get('/parcel');
+    const res = await api.get('/api/parcel');
     return res.data;
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || 'Error loading bookings');
@@ -160,7 +160,7 @@ export const updateParcel = createAsyncThunk<
   { rejectValue: string }
 >('parcel/updateParcel', async ({ id, ...data }, thunkAPI) => {
   try {
-    const res = await api.patch(`/parcel/${id}`, data);
+    const res = await api.patch(`/api/parcel/${id}`, data);
     return res.data;
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || 'Update failed');
@@ -174,7 +174,7 @@ export const deleteParcel = createAsyncThunk<
   { rejectValue: string }
 >('parcel/deleteParcel', async (id, thunkAPI) => {
   try {
-    await api.delete(`/parcel/${id}`);
+    await api.delete(`/api/parcel/${id}`);
     return id;
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || 'Delete failed');
