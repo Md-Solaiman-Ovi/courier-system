@@ -5,7 +5,7 @@ import { FaUsers, FaCar, FaDollarSign, FaBox } from "react-icons/fa";
 
 const Dashboard: React.FC = () => {
   return (
-    <div className=" pt-20 p-6 bg-teal-50 h-screen">
+    <div className=" pt-5">
       <h2 className="text-xl font-bold mb-4">Welcome Super</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">

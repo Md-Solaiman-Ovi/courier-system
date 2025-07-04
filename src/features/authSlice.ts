@@ -1,132 +1,3 @@
-// /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { createSlice, createAsyncThunk, createAction, type PayloadAction } from '@reduxjs/toolkit';
-// import api from '../services/api';
-
-// interface User {
-//   id: string;
-//   name: string;
-//   email: string;
-//   role: 'admin' | 'customer' | 'agent';
-// }
-
-// interface AuthResponse {
-//   user: User;
-//   token: string;
-// }
-
-// interface AuthState {
-//   user: User | null;
-//   token: string | null;
-//   loading: boolean;
-//   error: string | null;
-//   success: boolean;
-// }
-
-// const initialState: AuthState = {
-//   user: null,
-//   token: null,
-//   loading: false,
-//   error: null,
-//   success: false,
-// };
-
-// // Action to reset success/error flags
-// const clearAuthState = createAction("auth/clearState");
-
-// // Login Thunk
-// export const loginUser = createAsyncThunk<
-//   AuthResponse,
-//   { email: string; password: string },
-//   { rejectValue: string }
-// >('auth/loginUser', async (credentials, thunkAPI) => {
-//   try {
-//     const response = await api.post('/auth/login', credentials);
-//     return response.data;
-//   } catch (error: any) {
-//     return thunkAPI.rejectWithValue(error.response?.data?.message || 'Login failed');
-//   }
-// });
-
-// // Register Thunk
-// export const registerUser = createAsyncThunk<
-//   AuthResponse,
-//   { name: string; email: string; password: string },
-//   { rejectValue: string }
-// >('auth/registerUser', async (formData, thunkAPI) => {
-//   try {
-//     const response = await api.post('/auth/register', formData);
-//     return response.data;
-//   } catch (error: any) {
-//     return thunkAPI.rejectWithValue(error.response?.data?.message || 'Registration failed');
-//   }
-// });
-
-// const authSlice = createSlice({
-//   name: 'auth',
-//   initialState,
-//   reducers: {
-//     logout(state) {
-//       state.user = null;
-//       state.token = null;
-//       state.loading = false;
-//       state.error = null;
-//       state.success = false;
-//     },
-//   },
-//   extraReducers: (builder) => {
-//     // Login
-//     builder
-//       .addCase(loginUser.pending, (state) => {
-//         state.loading = true;
-//         state.error = null;
-//         state.success = false;
-//       })
-//       .addCase(loginUser.fulfilled, (state, action: PayloadAction<AuthResponse>) => {
-//         state.user = action.payload.user;
-//         state.token = action.payload.token;
-//         state.loading = false;
-//         state.success = true;
-//       })
-//       .addCase(loginUser.rejected, (state, action: PayloadAction<string | undefined>) => {
-//         state.loading = false;
-//         state.error = action.payload || 'Login failed';
-//         state.success = false;
-//       });
-
-//     // Register
-//     builder
-//       .addCase(registerUser.pending, (state) => {
-//         state.loading = true;
-//         state.error = null;
-//         state.success = false;
-//       })
-//       .addCase(registerUser.fulfilled, (state, action: PayloadAction<AuthResponse>) => {
-//         state.user = action.payload.user;
-//         state.token = action.payload.token;
-//         state.loading = false;
-//         state.success = true;
-//       })
-//       .addCase(registerUser.rejected, (state, action: PayloadAction<string | undefined>) => {
-//         state.loading = false;
-//         state.error = action.payload || 'Registration failed';
-//         state.success = false;
-//       });
-
-//     // Clear toast states
-//     builder.addCase(clearAuthState, (state) => {
-//       state.success = false;
-//       state.error = null;
-//     });
-//   },
-// });
-
-// export const { logout } = authSlice.actions;
-// export { clearAuthState };
-// export default authSlice.reducer;
-
-
-
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice, createAsyncThunk, createAction, type PayloadAction } from '@reduxjs/toolkit';
 import api from '../services/api';
@@ -151,22 +22,29 @@ interface AuthState {
   success: boolean;
 }
 
-// ✅ Load initial state from localStorage
-const token = localStorage.getItem('token');
-const user = localStorage.getItem('user');
+// ✅ Safe user parsing from localStorage
+let parsedUser: User | null = null;
+try {
+  const rawUser = localStorage.getItem('user');
+  parsedUser = rawUser && rawUser !== 'undefined' ? JSON.parse(rawUser) : null;
+} catch (err) {
+  parsedUser = null;
+  console.error("Error parsing user from localStorage", err);
+}
 
+// ✅ Initial state
 const initialState: AuthState = {
-  user: user ? JSON.parse(user) : null,
-  token: token || null,
+  user: parsedUser,
+  token: localStorage.getItem('token') || null,
   loading: false,
   error: null,
   success: false,
 };
 
-// ✅ Action to reset success/error flags
+// ✅ Clear auth state flags
 const clearAuthState = createAction("auth/clearState");
 
-// ✅ Login Thunk
+// ✅ Login thunk
 export const loginUser = createAsyncThunk<
   AuthResponse,
   { email: string; password: string },
@@ -180,7 +58,7 @@ export const loginUser = createAsyncThunk<
   }
 });
 
-// ✅ Register Thunk
+// ✅ Register thunk
 export const registerUser = createAsyncThunk<
   AuthResponse,
   { name: string; email: string; password: string; role: string },
@@ -194,6 +72,7 @@ export const registerUser = createAsyncThunk<
   }
 });
 
+// ✅ Slice
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -205,13 +84,13 @@ const authSlice = createSlice({
       state.error = null;
       state.success = false;
 
-      // Clear from localStorage
+      // Clear localStorage
       localStorage.removeItem('token');
       localStorage.removeItem('user');
     },
   },
   extraReducers: (builder) => {
-    // ✅ Login
+    // Login
     builder
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
@@ -234,7 +113,7 @@ const authSlice = createSlice({
         state.success = false;
       });
 
-    // ✅ Register
+    // Register
     builder
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
@@ -257,7 +136,7 @@ const authSlice = createSlice({
         state.success = false;
       });
 
-    // ✅ Reset flags
+    // Clear flags
     builder.addCase(clearAuthState, (state) => {
       state.success = false;
       state.error = null;
@@ -265,6 +144,7 @@ const authSlice = createSlice({
   },
 });
 
+// ✅ Exports
 export const { logout } = authSlice.actions;
 export { clearAuthState };
 export default authSlice.reducer;

@@ -1,26 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchAssignedParcels,
-  updateParcelStatus,
-} from "../features/agentSlice";
-import type { AppDispatch, RootState } from "../redux/store";
+// import React, { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import {
+//   fetchAssignedParcels,
+//   updateParcelStatus,
+// } from "../features/agentSlice";
+// import type { AppDispatch, RootState } from "../redux/store";
 import CustomerNavbar from "../components/CustomerNavbar";
+import AssignedParcels from "../components/AssignedParcels";
 
-const statusOptions = ["Picked Up", "In Transit", "Delivered", "Failed"];
+// const statusOptions = ["Picked Up", "In Transit", "Delivered", "Failed"];
 
 const AgentDashboard: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const { parcels } = useSelector((state: RootState) => state.agent);
+  // const dispatch = useDispatch<AppDispatch>();
+  // const { parcels } = useSelector((state: RootState) => state.agent);
 
-  useEffect(() => {
-    dispatch(fetchAssignedParcels());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchAssignedParcels());
+  // }, [dispatch]);
 
-  const handleStatusChange = (parcelId: string, status: string) => {
-    dispatch(updateParcelStatus({ parcelId, status }));
-  };
+  // const handleStatusChange = (parcelId: string, status: string) => {
+  //   dispatch(updateParcelStatus({ parcelId, status }));
+  // };
 
   return (
     <div>
@@ -28,7 +29,7 @@ const AgentDashboard: React.FC = () => {
         <CustomerNavbar />
       </div>
 
-      <div className="container mx-auto p-6 space-y-6">
+      {/* <div className="container mx-auto p-6 space-y-6">
         <h1 className="text-2xl font-bold mb-4">Assigned Deliveries</h1>
         {parcels.length === 0 ? (
           <p>No parcels assigned yet.</p>
@@ -66,7 +67,8 @@ const AgentDashboard: React.FC = () => {
             </tbody>
           </table>
         )}
-      </div>
+      </div> */}
+      <AssignedParcels />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import AgentDashboard from "../pages/AgentDashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import UserAndBookings from "../pages/UserAndBookings";
 
 const AppRouter = () => {
   return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
           {/* Protected - Admin */}
           <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/users-bookings" element={<UserAndBookings />} />
           </Route>
 
           {/* Protected - Customer */}
