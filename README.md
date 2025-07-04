@@ -39,9 +39,12 @@ This is the **frontend application** for the Courier and Parcel Management Syste
 ### ⚙️ Install dependencies
     
     ```bash
+    git clone git@github.com:Md-Solaiman-Ovi/courier-system.git
+    cd courier-system
     pnpm install
-    # or
-    npm install
+    pnpm run dev
+    
+    
 ## 🔐 Demo Credentials
 
 Use the following demo accounts to test the system based on user roles:
