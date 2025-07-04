@@ -88,10 +88,11 @@ interface Parcel {
   _id: string;
   pickupAddress: string;
   deliveryAddress: string;
-  type: string;
+  parcelType: 'document' | 'box' | 'fragile'; // ✅ renamed
   isCOD: boolean;
   status: string;
   createdAt: string;
+ 
 }
 
 type CreateParcelInput = Omit<Parcel, '_id' | 'status' | 'createdAt'>;
@@ -125,6 +126,20 @@ export const createParcel = createAsyncThunk<
 });
 
 // ✅ Get My Parcels
+export const getParcelsByUser = createAsyncThunk<Parcel[], void, { rejectValue: string }>(
+  'parcel/getParcelsByUser',
+  async (_, thunkAPI) => {
+    try {
+      const res = await api.get('/parcel/my-parcels');
+      // console.log("my parcels: ", res)
+      return res.data;
+    } catch (err: any) {
+      return thunkAPI.rejectWithValue(err.response?.data?.message || 'Error loading bookings');
+    }
+  }
+);
+
+// ✅ Get All Parcels
 export const getMyParcels = createAsyncThunk<
   Parcel[],
   void,
@@ -176,6 +191,20 @@ const parcelSlice = createSlice({
       // Create
       .addCase(createParcel.fulfilled, (state, action: PayloadAction<Parcel>) => {
         state.myParcels.unshift(action.payload);
+      })
+
+      // Add case for getParcelsByUser thunk:
+      .addCase(getParcelsByUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getParcelsByUser.fulfilled, (state, action: PayloadAction<Parcel[]>) => {
+        state.myParcels = action.payload;
+        state.loading = false;
+      })
+      .addCase(getParcelsByUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || 'Failed to load parcels';
       })
 
       // Get All

@@ -1,10 +1,10 @@
 import ParcelBookingForm from "../components/ParcelBookingForm";
 import BookingHistory from "../components/BookingHistory";
-import LiveTracking from "../components/LiveTracking";
+// import LiveTracking from "../components/LiveTracking";
 import CustomerNavbar from "../components/CustomerNavbar";
 
 const CustomerDashboard = () => {
-  const parcelId = "replace-with-latest-active-parcel-id"; // Logic will be dynamic
+  // const parcelId = "replace-with-latest-active-parcel-id"; // Logic will be dynamic
 
   return (
     <div className="bg-teal-50">
@@ -15,7 +15,7 @@ const CustomerDashboard = () => {
       <div className="container mx-auto p-6 space-y-6">
         <ParcelBookingForm />
         <BookingHistory />
-        <LiveTracking parcelId={parcelId} />
+        {/* <LiveTracking parcelId={parcelId} /> */}
       </div>
     </div>
   );

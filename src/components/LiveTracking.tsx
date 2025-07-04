@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import ParcelMap from "./ParcelMap";
 
-const socket = io(import.meta.env.VITE_API_BASE_URL || "http://localhost:8000");
+const socket = io(
+  import.meta.env.VITE_API_BASE_URL ||
+    "https://courier-system-backend.vercel.app"
+);
 
 const LiveTracking: React.FC<{ parcelId: string }> = ({ parcelId }) => {
   const [coords, setCoords] = useState({ lat: 23.7806, lng: 90.4074 }); // default: Dhaka
