@@ -54,7 +54,7 @@ const Register: React.FC = () => {
     if (user && !loading && !error) {
       toast.success("🎉 Account created successfully!");
     }
-  }, [user, loading, error, reset]);
+  }, [user, loading, error, reset, dispatch]);
 
   useEffect(() => {
     if (error) {
