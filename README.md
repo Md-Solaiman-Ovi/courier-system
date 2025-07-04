@@ -42,3 +42,16 @@ This is the **frontend application** for the Courier and Parcel Management Syste
 pnpm install
 # or
 npm install
+
+
+
+## 🔐 Demo Credentials
+
+Use the following demo accounts to test the system based on user roles:
+
+| Role     | Email                   | Password   |
+|----------|-------------------------|------------|
+| **Admin**    | `admin@gmail.com`     | `password`  |
+| **Agent**    | `agent@gmail.com`     | `agent123`  |
+| **Customer** | `customer@gmail.com`  | `customer123` |
+
