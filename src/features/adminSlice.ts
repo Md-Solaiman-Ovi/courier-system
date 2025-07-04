@@ -15,18 +15,18 @@ interface AdminState {
 }
 
 // Async actions
-export const fetchAllParcels = createAsyncThunk('admin/fetchAllParcels', async (_, thunkAPI) => {
+export const fetchAllParcels = createAsyncThunk('/api/admin/fetchAllParcels', async (_, thunkAPI) => {
   try {
-    const res = await api.get('/parcel');
+    const res = await api.get('/api/parcel');
     return res.data;
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || 'Failed to fetch parcels');
   }
 });
 
-export const fetchAllUsers = createAsyncThunk('admin/fetchAllUsers', async (_, thunkAPI) => {
+export const fetchAllUsers = createAsyncThunk('/api/admin/fetchAllUsers', async (_, thunkAPI) => {
   try {
-    const res = await api.get('/user');
+    const res = await api.get('/api/user');
     return res.data;
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || 'Failed to fetch users');
@@ -37,7 +37,7 @@ export const assignAgent = createAsyncThunk(
   'admin/assignAgent',
   async ({ parcelId, agentId }: { parcelId: string; agentId: string }, thunkAPI) => {
     try {
-      const res = await api.put(`/parcel/${parcelId}/assign`, { agentId });
+      const res = await api.put(`/api/parcel/${parcelId}/assign`, { agentId });
       return res.data;
     } catch (err: any) {
       return thunkAPI.rejectWithValue(err.response?.data?.message || 'Failed to assign agent');
@@ -47,7 +47,7 @@ export const assignAgent = createAsyncThunk(
 
 export const fetchDashboardMetrics = createAsyncThunk('admin/fetchDashboardMetrics', async (_, thunkAPI) => {
   try {
-    const res = await api.get('/reports/summary');
+    const res = await api.get('/api/reports/summary');
     return res.data;
   } catch (err: any) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || 'Failed to fetch metrics');

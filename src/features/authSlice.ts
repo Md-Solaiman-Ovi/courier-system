@@ -49,7 +49,7 @@ export const loginUser = createAsyncThunk<
   AuthResponse,
   { email: string; password: string },
   { rejectValue: string }
->('auth/loginUser', async (credentials, thunkAPI) => {
+>('/api/auth/loginUser', async (credentials, thunkAPI) => {
   try {
     const response = await api.post('/api/auth/login', credentials);
     return response.data;
@@ -63,7 +63,7 @@ export const registerUser = createAsyncThunk<
   AuthResponse,
   { name: string; email: string; password: string; role: string },
   { rejectValue: string }
->('auth/registerUser', async (formData, thunkAPI) => {
+>('/api/auth/registerUser', async (formData, thunkAPI) => {
   try {
     const response = await api.post('/api/auth/register', formData);
     return response.data;
