@@ -4,7 +4,7 @@ This is the **frontend application** for the Courier and Parcel Management Syste
 
 ## 🔥 Live App
 
-👉 [https://courier-system.vercel.app](https://courier-system.vercel.app)
+👉 [https://courier-system-nine.vercel.app/](https://courier-system-nine.vercel.app/)
 
 > Make sure your backend is running or deployed for full functionality.  
 > Backend Repo: [courier-system-backend](https://github.com/Md-Solaiman-Ovi/courier-system-backend)
@@ -15,10 +15,7 @@ This is the **frontend application** for the Courier and Parcel Management Syste
 
 - 🔐 JWT Authentication (with Refresh Token support)
 - 👨‍💼 Role-based Dashboards: Admin, Customer, Agent
-- 📦 Parcel creation, assignment, and tracking
-- 📍 Real-time location updates (via Socket.IO)
-- 📊 Dashboard metrics and parcel status filters
-- 📃 Report generation (PDF/CSV via backend)
+- 📦 Parcel creation, assignment
 - 📱 Fully responsive layout
 - 🧠 Clean architecture with reusable components
 
